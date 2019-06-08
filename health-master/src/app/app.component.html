@@ -1,0 +1,9 @@
+<mat-sidenav-container>
+    <mat-sidenav opened="false" #sidenav>
+        <app-sidenav-list (toggleEvent)="sidenav.toggle()"></app-sidenav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-toolbar (toggleEvent)="sidenav.toggle()"></app-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

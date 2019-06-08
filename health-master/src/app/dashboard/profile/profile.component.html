@@ -1,0 +1,36 @@
+<section fxLayout="column" fxLayoutAlign="center center" style="margin-top: 20px;">
+  <mat-card>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSignup(f)">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Name" ngModel [(ngModel)]="user.name" name="name" required>
+        <mat-error>Name is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" [(ngModel)]="user.age" matInput placeholder="Age" #ageInput="ngModel" ngModel name="age" min=18 max=60 required>
+        <span matSuffix>Years</span>
+        <mat-error>Age is required.</mat-error>
+        <mat-error *ngIf="ageInput.value>60 || ageInput.value<18">Invalid Age.</mat-error>
+      </mat-form-field>
+      <mat-radio-group [(ngModel)]="user.gender" name="gender" ngModel required>
+        Gender*:
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="others">Others</mat-radio-button>
+      </mat-radio-group>
+      <div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="10px">
+        <mat-form-field style="width: 150px">
+          <input type="number" [(ngModel)]="user.height" matInput placeholder="Height" ngModel name="height" required>
+          <span matSuffix>cm</span>
+          <mat-error>Height is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 150px">
+          <input type="number" [(ngModel)]="user.weight" matInput placeholder="Weight" ngModel name="weight" required>
+          <span matSuffix>kg</span>
+          <mat-error>Weight is required.</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-progress-spinner diameter="35" *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
+      <button *ngIf="!isLoading" type="submit" color="primary" [disabled]="f.invalid" mat-raised-button>Update</button>
+    </form>
+  </mat-card>
+</section>

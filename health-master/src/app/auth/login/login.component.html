@@ -1,0 +1,20 @@
+<section fxLayout="column" fxLayoutAlign="center center" style="margin-top: 20px;">
+  <mat-card>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onLogin(f)">
+      <mat-form-field>
+        <input type="email" matInput placeholder="Email" ngModel #emailInput="ngModel" name="email" email required>
+        <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid.</mat-error>
+        <mat-error *ngIf="emailInput.hasError('required')">Email is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" matInput placeholder="Password" #passInput="ngModel" ngModel name="password" minlength="8" required>
+        <mat-hint>Password should be 8 character long.</mat-hint>
+        <mat-hint align="end">{{passInput.value?passInput.value.length:0}}/8</mat-hint>
+        <mat-error *ngIf="passInput.hasError('required')">Password is required.</mat-error>
+      </mat-form-field>
+      <mat-progress-spinner diameter="35" *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
+      <button *ngIf="!isLoading" type="submit" color="primary" [disabled]="f.invalid" mat-raised-button>Login</button>
+      <span>Don't have an account? Click <a matTooltip="Signup" routerLink="/signup">here</a></span>
+    </form>
+  </mat-card>
+</section>

@@ -1,0 +1,53 @@
+<section fxLayout="column" fxLayoutAlign="center center" style="margin-top: 20px;">
+  <mat-card>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSignup(f)">
+      <mat-form-field>
+        <input type="email" matInput placeholder="Email" ngModel #emailInput="ngModel" name="email" email required>
+        <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid.</mat-error>
+        <mat-error *ngIf="emailInput.hasError('required')">Email is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" matInput placeholder="Password" #passInput="ngModel" ngModel name="password" minlength="8" required>
+        <mat-hint>Password should be 8 character long.</mat-hint>
+        <mat-hint align="end">{{passInput.value?passInput.value.length:0}}/8</mat-hint>
+        <mat-error *ngIf="passInput.hasError('required')">Password is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Channel Id" #channelInput="ngModel" ngModel name="channel" minlength="8" required>
+        <mat-hint>You can collect the channel id from your supervisor.</mat-hint>
+        <mat-hint align="end">{{channelInput.value?channelInput.value.length:0}}/8</mat-hint>
+        <mat-error *ngIf="channelInput.hasError('required')">Password is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Name" ngModel name="name" required>
+        <mat-error>Name is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput placeholder="Age" #ageInput="ngModel" ngModel name="age" min=18 max=60 required>
+        <span matSuffix>Years</span>
+        <mat-error>Age is required.</mat-error>
+        <mat-error *ngIf="ageInput.value>60 || ageInput.value<18">Invalid Age.</mat-error>
+      </mat-form-field>
+      <mat-radio-group name="gender" ngModel required>
+        Gender*:
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="others">Others</mat-radio-button>
+      </mat-radio-group>
+      <div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="10px">
+        <mat-form-field style="width: 150px">
+          <input type="number" matInput placeholder="Height" ngModel name="height" required>
+          <span matSuffix>cm</span>
+          <mat-error>Height is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 150px">
+          <input type="number" matInput placeholder="Weight" ngModel name="weight" required>
+          <span matSuffix>kg</span>
+          <mat-error>Weight is required.</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-progress-spinner diameter="35" *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
+      <button *ngIf="!isLoading" type="submit" color="primary" [disabled]="f.invalid" mat-raised-button>Sign-up</button>
+    </form>
+  </mat-card>
+</section>

@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <a *ngIf="!authStatus" mat-list-item (click)="onSidenavToggle()" routerLink="/login"><mat-icon>input</mat-icon>Login</a>
+  <a *ngIf="authStatus" mat-list-item (click)="onSidenavToggle()" routerLink="/home"><mat-icon>home</mat-icon>Home</a>
+  <a *ngIf="authStatus" mat-list-item (click)="onSidenavToggle()" routerLink="/profile"><mat-icon>face</mat-icon>Profile</a>
+  <a *ngIf="authStatus" mat-list-item (click)="onSidenavToggle()" routerLink="/score"><mat-icon>healing</mat-icon>Health Score</a>
+  <a *ngIf="authStatus" mat-list-item (click)="onSidenavToggle()" routerLink="/healthdata"><mat-icon>data_usage</mat-icon>Health Data</a>
+  <a *ngIf="authStatus" mat-list-item (click)="onLogout()" ><mat-icon>eject</mat-icon>Log-out</a>
+</mat-nav-list>

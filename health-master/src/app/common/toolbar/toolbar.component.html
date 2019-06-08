@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button matTooltip="Menu" mat-icon-button (click)="onSidenavToggle()"><mat-icon>menu</mat-icon></button>
+    </div>
+    <div>
+        HealthMeter
+    </div>
+    <div fxHide.xs fxFlex fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+        <a *ngIf="!authStatus" matTooltip="Login" mat-icon-button routerLink="/login"><mat-icon>input</mat-icon></a>
+        <a *ngIf="authStatus" matTooltip="Home" mat-icon-button routerLink="/home"><mat-icon>home</mat-icon></a>
+        <a *ngIf="authStatus" matTooltip="Profile" mat-icon-button routerLink="/profile"><mat-icon>face</mat-icon></a>
+        <a *ngIf="authStatus" matTooltip="Logout" mat-icon-button (click)="onLogout()"><mat-icon>eject</mat-icon></a>
+    </div>
+</mat-toolbar>
