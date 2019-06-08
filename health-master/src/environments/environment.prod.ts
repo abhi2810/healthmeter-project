@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyCMEj_JFXxy9v4dGaSMD5vydElhl3B-Sgw',
+    apiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
     authDomain: 'healthmeter-b5ac6.firebaseapp.com',
     databaseURL: 'https://healthmeter-b5ac6.firebaseio.com',
     projectId: 'healthmeter-b5ac6',
